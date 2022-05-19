@@ -20,13 +20,13 @@ public class ClienteController {
         cliente.setId(1L);
         cliente.setNome("João");
         cliente.setEmail("joao@teste.com");
-        cliente.setTelefone("11 957889800");
+        cliente.setTelefone("11 90909090");
 
         Cliente cliente1 = new Cliente();
-        cliente1.setId(1L);
-        cliente1.setNome("João");
-        cliente1.setEmail("joao@teste.com");
-        cliente1.setTelefone("11 957889800");
+        cliente1.setId(2L);
+        cliente1.setNome("Maria");
+        cliente1.setEmail("maria@teste.com");
+        cliente1.setTelefone("11 98989898");
 
         return Arrays.asList(cliente, cliente1);
     }
