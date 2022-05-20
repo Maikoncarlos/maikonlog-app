@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @AllArgsConstructor
 @RestController
@@ -24,18 +25,17 @@ public class ClienteController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Cliente> listarPorId(@PathVariable Long id) {
-        return clienteRepository.findById(id)
-                .map(cliente -> ResponseEntity.ok(cliente))
-                .orElse(ResponseEntity.notFound().build());
+//        return clienteRepository.findById(id)
+//                .map(cliente -> ResponseEntity.ok(cliente))
+//                .orElse(ResponseEntity.notFound().build());
 
-//        Optional<Cliente> cliente = clienteRepository.findById(id);
-//
-//        if(cliente.isPresent()){
-//            ResponseEntity.ok(cliente);
-//        }
-//
-//       return ResponseEntity.notFound().build();
+        Optional<Cliente> cliente = clienteRepository.findById(id);
+        if(cliente.isPresent()){
+            ResponseEntity.ok(cliente);
+        }
+       return ResponseEntity.notFound().build();
     }
+
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping()
