@@ -1,6 +1,6 @@
-package com.github.Maikoncarlos.maikonlogapp.domain.repositories;
+package com.github.maikoncarlos.maikonlogapp.domain.repositories;
 
-import com.github.Maikoncarlos.maikonlogapp.domain.model.Cliente;
+import com.github.maikoncarlos.maikonlogapp.domain.model.Cliente;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

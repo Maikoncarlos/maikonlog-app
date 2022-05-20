@@ -1,4 +1,4 @@
-package com.github.Maikoncarlos.maikonlogapp.domain.model;
+package com.github.maikoncarlos.maikonlogapp.domain.model;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
