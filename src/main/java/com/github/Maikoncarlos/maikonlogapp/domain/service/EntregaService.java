@@ -1,10 +1,8 @@
 package com.github.maikoncarlos.maikonlogapp.domain.service;
 
-import com.github.maikoncarlos.maikonlogapp.domain.exception.NegocioException;
 import com.github.maikoncarlos.maikonlogapp.domain.model.Cliente;
 import com.github.maikoncarlos.maikonlogapp.domain.model.Entrega;
 import com.github.maikoncarlos.maikonlogapp.domain.model.StatusEntrega;
-import com.github.maikoncarlos.maikonlogapp.domain.repositories.ClienteRepository;
 import com.github.maikoncarlos.maikonlogapp.domain.repositories.EntregaRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -21,7 +19,7 @@ public class EntregaService {
 
     @Transactional
     public Entrega novaEntrega(Entrega entrega) {
-      Cliente cliente = clienteService.buscar(entrega.getCliente().getId());
+        Cliente cliente = clienteService.buscar(entrega.getCliente().getId());
 
         entrega.setStatus(StatusEntrega.PENDENTE);
         entrega.setDataPedido(LocalDateTime.now());

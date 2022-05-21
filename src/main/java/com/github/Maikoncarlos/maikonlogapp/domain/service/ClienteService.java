@@ -6,9 +6,6 @@ import com.github.maikoncarlos.maikonlogapp.domain.repositories.ClienteRepositor
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.RequestBody;
-
-import javax.validation.Valid;
 
 @AllArgsConstructor
 @Service
@@ -16,9 +13,9 @@ public class ClienteService {
 
     private ClienteRepository clienteRepository;
 
-    public Cliente buscar(Long id){
+    public Cliente buscar(Long id) {
         return clienteRepository.findById(id)
-                .orElseThrow(()-> new NegocioException("cliente não encontrado"));
+                .orElseThrow(() -> new NegocioException("cliente não encontrado"));
     }
 
     @Transactional
