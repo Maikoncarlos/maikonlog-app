@@ -3,6 +3,7 @@ package com.github.maikoncarlos.maikonlogapp.api.controller;
 
 import com.github.maikoncarlos.maikonlogapp.domain.model.Cliente;
 import com.github.maikoncarlos.maikonlogapp.domain.repositories.ClienteRepository;
+import com.github.maikoncarlos.maikonlogapp.domain.service.ClienteService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +19,7 @@ import java.util.Optional;
 public class ClienteController {
 
     private ClienteRepository clienteRepository;
+    private ClienteService clienteService;
 
     @GetMapping
     public List<Cliente> listar() {
@@ -41,7 +43,7 @@ public class ClienteController {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping()
     public Cliente adicionar(@Valid @RequestBody Cliente cliente) {
-        return clienteRepository.save(cliente);
+        return clienteService.salvar(cliente);
     }
 
     @PutMapping("/{id}")
@@ -51,7 +53,7 @@ public class ClienteController {
             return ResponseEntity.notFound().build();
         }
         cliente.setId(cliente.getId());
-        cliente = clienteRepository.save(cliente);
+        cliente = clienteService.salvar(cliente);
 
         return ResponseEntity.ok(cliente);
     }
@@ -63,7 +65,7 @@ public class ClienteController {
         if (!clienteRepository.existsById(id)) {
             return ResponseEntity.notFound().build();
         }
-        clienteRepository.deleteById(id);
+        clienteService.excluir(id);
 
         return ResponseEntity.noContent().build();
     }
