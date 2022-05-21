@@ -28,10 +28,6 @@ public class ClienteController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Cliente> listarPorId(@PathVariable Long id) {
-//        return clienteRepository.findById(id)
-//                .map(cliente -> ResponseEntity.ok(cliente))
-//                .orElse(ResponseEntity.notFound().build());
-
         Optional<Cliente> cliente = clienteRepository.findById(id);
         if(cliente.isPresent()){
             ResponseEntity.ok(cliente);
