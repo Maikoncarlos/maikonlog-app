@@ -1,4 +1,4 @@
-package com.github.maikoncarlos.maikonlogapp.controller;
+package com.github.maikoncarlos.maikonlogapp.api.controller;
 
 
 import com.github.maikoncarlos.maikonlogapp.domain.model.Cliente;

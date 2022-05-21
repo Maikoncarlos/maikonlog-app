@@ -7,6 +7,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Getter @Setter
@@ -20,15 +21,15 @@ public class Cliente {
     private Long id;
 
     @NotBlank
-    @Column(length = 100)
+    @Size(max = 100)
     private String nome;
 
     @Email
     @NotBlank
-    @Column(length = 100)
+    @Size(max = 100)
     private String email;
 
     @NotBlank
-    @Column(length = 20)
+    @Size(max = 20)
     private String telefone ;
 }
