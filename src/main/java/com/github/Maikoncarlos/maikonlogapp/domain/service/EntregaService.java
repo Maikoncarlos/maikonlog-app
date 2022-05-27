@@ -1,5 +1,7 @@
 package com.github.maikoncarlos.maikonlogapp.domain.service;
 
+import com.github.maikoncarlos.maikonlogapp.api.mapper.EntregaMapper;
+import com.github.maikoncarlos.maikonlogapp.api.model.response.EntregaResponse;
 import com.github.maikoncarlos.maikonlogapp.domain.model.Cliente;
 import com.github.maikoncarlos.maikonlogapp.domain.model.Entrega;
 import com.github.maikoncarlos.maikonlogapp.domain.model.StatusEntrega;
@@ -18,6 +20,7 @@ public class EntregaService {
 
     private ClienteService clienteService;
     private EntregaRepository entregaRepository;
+    private EntregaMapper entregaMapper;
 
     @Transactional
     public Entrega novaEntrega(Entrega entrega) {
@@ -29,14 +32,14 @@ public class EntregaService {
         return entregaRepository.save(entrega);
     }
 
-    public List<Entrega> listar() {
-        return entregaRepository.findAll();
+    public List<EntregaResponse> listar() {
+        return entregaMapper.toCollectionResponse(entregaRepository.findAll());
     }
 
 
-    public ResponseEntity<Entrega> listarPorId(Long id) {
+    public ResponseEntity<EntregaResponse> listarPorId(Long id) {
         return entregaRepository.findById(id)
-                .map(ResponseEntity::ok)
+                .map(entrega -> ResponseEntity.ok(entregaMapper.toResponse(entrega)))
                 .orElse(ResponseEntity.notFound().build());
     }
 }

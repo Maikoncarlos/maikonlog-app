@@ -1,6 +1,5 @@
 package com.github.maikoncarlos.maikonlogapp.api.controller;
 
-
 import com.github.maikoncarlos.maikonlogapp.domain.model.Cliente;
 import com.github.maikoncarlos.maikonlogapp.domain.repositories.ClienteRepository;
 import com.github.maikoncarlos.maikonlogapp.domain.service.ClienteService;
@@ -43,11 +42,12 @@ public class ClienteController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Cliente> atualizar(@Valid @RequestBody Cliente cliente, @PathVariable Long id) {
-
+    public ResponseEntity<Cliente> atualizar(@Valid @RequestBody Cliente cliente,
+                                             @PathVariable Long id) {
         if (!clienteRepository.existsById(id)) {
             return ResponseEntity.notFound().build();
         }
+
         cliente.setId(cliente.getId());
         cliente = clienteService.salvar(cliente);
 
